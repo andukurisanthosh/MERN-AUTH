@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 
 connectDB();
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173', 'https://mern-auth-frontend-un9e.onrender.com'];
 
 app.use(cors({origin:allowedOrigins, credentials: true}));
 app.use(express.json());
