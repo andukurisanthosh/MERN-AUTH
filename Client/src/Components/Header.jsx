@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '../assets/assets'
 import { AppContext } from '../Context/AppContext'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 const Header = () => {
