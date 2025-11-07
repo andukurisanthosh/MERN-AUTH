@@ -8,6 +8,11 @@ const userRouter = require('./Routes/UserRoutes');
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(express.static(path.join(__dirname, 'dist'))); // or 'build' if CRA
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 connectDB();
 
 const allowedOrigins = ['http://localhost:5173'];
