@@ -18,9 +18,8 @@ app.get(/.*/, (req, res) => {
 
 connectDB();
 
-const allowedOrigins = ['http://localhost:5173', 'https://mern-auth-frontend-un9e.onrender.com'];
 
-app.use(cors({origin:allowedOrigins, credentials: true}));
+app.use(cors({origin:'https://mern-auth-frontend-un9e.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(cookieParser());
 
