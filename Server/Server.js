@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const connectDB = require('./Config/MongoDB');
 const authRouter = require('./Routes/AuthRouter');
 const userRouter = require('./Routes/UserRoutes');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
