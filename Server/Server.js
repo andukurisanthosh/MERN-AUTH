@@ -10,6 +10,9 @@ const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(cors({origin:'https://mern-auth-frontend-un9e.onrender.com', credentials: true}));
+
+
 app.use(express.static(path.join(__dirname, 'client/dist')));
 
 app.get(/.*/, (req, res) => {
@@ -19,7 +22,6 @@ app.get(/.*/, (req, res) => {
 connectDB();
 
 
-app.use(cors({origin:'https://mern-auth-frontend-un9e.onrender.com', credentials: true}));
 app.use(express.json());
 app.use(cookieParser());
 
