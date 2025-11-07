@@ -5,6 +5,7 @@ import { useContext } from 'react'
 
 
 const Header = () => {
+    const navigate = useNavigate()
 
     const {userData} = useContext(AppContext)
     return (
@@ -13,7 +14,7 @@ const Header = () => {
             <h1 className='flex item-center gap-2 text-xl sm:text-3xl font-medium mb-2'>Hey {userData?userData.username:"Developer"} <img src={assets.hand_wave} alt='' className='w-8 aspect-square' /></h1>
             <h2 className='text-3xl sm:text-5xl font-semibold mb-4'>Welcome to MERN-AUTH</h2>
             <p className='mb-8 max-w-md'>Let's start quick product tour !</p>
-            <button className='border border-gray-500 rounded-full px-8 py-2.5 hover:bg-gray-100 transition-all'>Get Started !</button>
+            <button onClick={navigate('/login')}  className='border border-gray-500 rounded-full px-8 py-2.5 hover:bg-gray-100 transition-all'>Get Started !</button>
 
         </div>
     )
