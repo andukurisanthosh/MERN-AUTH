@@ -13,9 +13,8 @@ export const AppContextProvider = (props) => {
 
     const getUserData = async () => {
         try {
-            if (!isLoggedIn) {
+            if (isLoggedIn) {
             const { data } = await axios.get(backendUrl + '/api/user/profile')
-            console.log(data);
             data.success ? setUserData(data.userData) : toast.error(data.message);
             }else{
                 setUserData(null);

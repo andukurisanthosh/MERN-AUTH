@@ -25,6 +25,9 @@ const Login = () => {
                     getUserData();
                     toast.success("Registration Successful. Please Login now.");
                     navigate('/');
+                    
+                } else {
+                    toast.error(data.message);
                 }
             } else {
                 const { data } = await axios.post(backendUrl+'/api/auth/login', {email, password })
@@ -33,6 +36,9 @@ const Login = () => {
                     getUserData();
                     toast.success("Login Successful");
                     navigate('/');
+                    
+                } else {
+                    toast.error(data.message);
                 }
             }
         } catch (error) {
