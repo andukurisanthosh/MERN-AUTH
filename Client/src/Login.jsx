@@ -24,7 +24,7 @@ const Login = () => {
                     setIsLoggedIn(true);
                     getUserData();
                     toast.success("Registration Successful. Please Login now.");
-                    navigate('/login');
+                    navigate('/');
                     
                 } else {
                     toast.error(data.message);
