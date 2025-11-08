@@ -24,6 +24,8 @@ const NavBar = () => {
             const { data } = await axios.post(backendUrl + '/api/auth/send-verify-otp-email');
             if (data.success) {
                 navigate('/verify-email');
+                console.log("Navigating to /verify-email");
+
                 toast.success(data.message);
             } else {
                 toast.error(data.message);
@@ -52,7 +54,7 @@ const NavBar = () => {
                         </div>
                      ):
                     (
-                        <button onClick={() => navigate('/login')} className='flex item-center gap-2 border border-gray-500 rounded-full px-6 py-2 test-gray-800 hover:bg-gray-100 transition-all'>
+                        <button onClick={() => navigate('/login')} className='flex items-center gap-2 border border-gray-500 rounded-full px-6 py-2 test-gray-800 hover:bg-gray-100 transition-all'>
                             Login <img src={assets.arrow_icon} alt="" />
                         </button>
                     )
