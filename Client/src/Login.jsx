@@ -13,16 +13,18 @@ const Login = () => {
     const [username, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [loading, setLoading] = useState(false);
+
 
     const onSubmitHandler = async (e) => {
         try {
             e.preventDefault();
+            setLoading(true);
             axios.defaults.withCredentials = true;
             if (state === 'Sign Up') {
                 const { data } = await axios.post(backendUrl + '/api/auth/register', { username, email, password })
-                toast.success("Registration Successful. Please Login now.");
-
                 if (data.success) {
+                    toast.success("Registration Successful. Please login now.");
                     navigate('/login');
 
                 } else {
@@ -42,7 +44,11 @@ const Login = () => {
             }
         } catch (error) {
             toast.error(error.message);
-        }
+        } finally {
+            setLoading(false);
+        }// Stop loading
+
+
     }
 
 
@@ -73,7 +79,16 @@ const Login = () => {
                     {
                         state === 'Login' && (<p onClick={() => navigate('/reset-password')} className='mb-4 text-indigo-500 cursor-pointer'>Forget Password ?</p>)
                     }
-                    <button className='w-full py-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-indigo-900 text-white font-medium'>{state}</button>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                        className={`w-full py-2.5 rounded-full font-medium text-white transition-all duration-200 ${loading
+                            ? 'bg-gray-400 cursor-not-allowed'
+                            : 'bg-gradient-to-r from-indigo-500 to-indigo-900 hover:opacity-90'
+                            }`}
+                    >
+                        {loading ? 'Processing...' : state}
+                    </button>
                 </form>
                 {
                     state === 'Sign Up' ?
