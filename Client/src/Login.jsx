@@ -21,10 +21,8 @@ const Login = () => {
             if (state === 'Sign Up') {
                 const { data } = await axios.post(backendUrl+'/api/auth/register', { username, email, password })
                 if (data.success) {
-                    setIsLoggedIn(true);
-                    getUserData();
                     toast.success("Registration Successful. Please Login now.");
-                    navigate('/');
+                    navigate('/login');
                     
                 } else {
                     toast.error(data.message);
