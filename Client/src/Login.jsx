@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate()
-    const {  backendUrl, setIsLoggedIn, getUserData} = useContext(AppContext);
+    const { backendUrl, setIsLoggedIn, getUserData } = useContext(AppContext);
 
     const [state, setState] = React.useState('Login'); // Login or Sign Up
     const [username, setUsername] = React.useState('');
@@ -19,22 +19,23 @@ const Login = () => {
             e.preventDefault();
             axios.defaults.withCredentials = true;
             if (state === 'Sign Up') {
-                const { data } = await axios.post(backendUrl+'/api/auth/register', { username, email, password })
+                const { data } = await axios.post(backendUrl + '/api/auth/register', { username, email, password })
+                toast.success("Registration Successful. Please Login now.");
+
                 if (data.success) {
-                    toast.success("Registration Successful. Please Login now.");
                     navigate('/login');
-                    
+
                 } else {
                     toast.error(data.message);
                 }
             } else {
-                const { data } = await axios.post(backendUrl+'/api/auth/login', {email, password })
+                const { data } = await axios.post(backendUrl + '/api/auth/login', { email, password })
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
                     toast.success("Login Successful");
                     navigate('/');
-                    
+
                 } else {
                     toast.error(data.message);
                 }
