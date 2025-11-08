@@ -23,7 +23,6 @@ const Login = () => {
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
-                    toast.success("Registration Successful. Please Login now.");
                     navigate('/');
                     
                 } else {
@@ -34,7 +33,6 @@ const Login = () => {
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
-                    toast.success("Login Successful");
                     navigate('/');
                     
                 } else {
