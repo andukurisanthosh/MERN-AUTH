@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../Models/UserModel');
 const transporter = require('../Config/NodeMailer');
-const { Email_Verify_Template, PASSWORD_RESET_TEMPLATE } = require('../Config/emailTemplates');
+// const { Email_Verify_Template, PASSWORD_RESET_TEMPLATE } = require('../Config/emailTemplates');
 
 
 const register = async (req, res) => {
@@ -108,8 +108,8 @@ const sendVerifyOtpEmail = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: 'Account Verification OTP',
-            // text: `Hello ${user.username},\n\nYour OTP for account verification is: ${user.verifyOtp}\nIt is valid for 24 hours.\n\nBest regards,\nTeam`,
-            html: Email_Verify_Template.replace('{{email}}', user.email).replace('{{otp}}', OTP)
+            text: `Hello ${user.username},\n\nYour OTP for account verification is: ${user.verifyOtp}\nIt is valid for 24 hours.\n\nBest regards,\nTeam`,
+            // html: Email_Verify_Template.replace('{{email}}', user.email).replace('{{otp}}', OTP)
         };
 
         await transporter.sendMail(mailOptions);
@@ -178,8 +178,8 @@ const sendResetPasswordOtpEmail = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: 'Password Reset OTP',
-            // text: `Hello ${user.username},\n\nYour OTP for password reset is: ${user.resetPasswordOtp}\nIt is valid for 1 hour.\n\nBest regards,\nTeam`
-            html: PASSWORD_RESET_TEMPLATE.replace('{{email}}', user.email).replace('{{otp}}', OTP)
+            text: `Hello ${user.username},\n\nYour OTP for password reset is: ${user.resetPasswordOtp}\nIt is valid for 1 hour.\n\nBest regards,\nTeam`
+            // html: PASSWORD_RESET_TEMPLATE.replace('{{email}}', user.email).replace('{{otp}}', OTP)
         };
         await transporter.sendMail(mailOptions);
         res.json({ success: true, message: 'Password reset OTP sent to email' });
