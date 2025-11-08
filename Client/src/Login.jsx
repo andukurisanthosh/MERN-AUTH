@@ -83,12 +83,20 @@ const Login = () => {
                         type="submit"
                         disabled={loading}
                         className={`w-full py-2.5 rounded-full font-medium text-white transition-all duration-200 ${loading
-                            ? 'bg-gray-400 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-indigo-500 to-indigo-900 hover:opacity-90'
+                                ? 'bg-gray-400 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-indigo-500 to-indigo-900 hover:opacity-90'
                             }`}
                     >
-                        {loading ? 'Processing...' : state}
+                        {loading ? (
+                            <div className="flex items-center justify-center gap-2">
+                                <span className="loader w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                                Processing...
+                            </div>
+                        ) : (
+                            state
+                        )}
                     </button>
+
                 </form>
                 {
                     state === 'Sign Up' ?
