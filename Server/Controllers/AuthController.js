@@ -30,14 +30,14 @@ const register = async (req, res) => {
                 maxAge: 7 * 24 * 60 * 60 * 1000
             });
 
-        const mailOptions = {
-            from: process.env.SENDER_EMAIL,
-            to: newUser.email,
-            subject: 'Welcome to Our Service',
-            text: `Hello ${newUser.username},\n\nThank you for registering at our service!\n\nBest regards,\nTeam`
-        };
+        // const mailOptions = {
+        //     from: process.env.SENDER_EMAIL,
+        //     to: newUser.email,
+        //     subject: 'Welcome to Our Service',
+        //     text: `Hello ${newUser.username},\n\nThank you for registering at our service!\n\nBest regards,\nTeam`
+        // };
 
-        await transporter.sendMail(mailOptions);
+        // await transporter.sendMail(mailOptions);
 
         res.json({ success: true, message: 'User registered successfully' });
     } catch (error) {
