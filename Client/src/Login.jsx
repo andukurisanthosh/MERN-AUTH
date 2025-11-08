@@ -23,20 +23,16 @@ const Login = () => {
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
+                    toast.success("Registration Successful. Please Login now.");
                     navigate('/');
-                    
-                } else {
-                    toast.error(data.message);
                 }
             } else {
                 const { data } = await axios.post(backendUrl+'/api/auth/login', {email, password })
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
+                    toast.success("Login Successful");
                     navigate('/');
-                    
-                } else {
-                    toast.error(data.message);
                 }
             }
         } catch (error) {
