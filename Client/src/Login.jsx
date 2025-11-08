@@ -23,7 +23,7 @@ const Login = () => {
                 if (data.success) {
                     setIsLoggedIn(true);
                     getUserData();
-                    navigate('/');
+                    navigate('/login');
                 } else {
                     toast.error(data.message);
                 }
