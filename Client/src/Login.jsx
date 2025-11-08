@@ -25,7 +25,7 @@ const Login = () => {
                 const { data } = await axios.post(backendUrl + '/api/auth/register', { username, email, password })
                 if (data.success) {
                     toast.success("Registration Successful. Please login now.");
-                    navigate('/login');
+                    navigate('/login', { replace: true });
 
                 } else {
                     toast.error(data.message);
